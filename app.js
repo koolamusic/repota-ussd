@@ -5,8 +5,8 @@ var express    = require('express');
 var app        = express();
 var bodyParser = require('body-parser');
 var index      = require('./routes/index');
-var sms        = require('./routes/sms');
-var voice      = require('./routes/voice')
+// var sms        = require('./routes/sms');
+// var voice      = require('./routes/voice')
 var ussd       = require('./routes/ussd');
 var payments   = require('./routes/payments');
 var dlrs       = require('./routes/dlrs');
@@ -34,10 +34,10 @@ var models = require('./models');
 
 // Import routes
 app.get('/', index.index);
-app.post('/incomingSms', sms.receiveSms);
+// app.post('/incomingSms', sms.receiveSms);
 app.post('/wiredUssd', ussd.wiredUssd);
 app.post('/dlrs', dlrs.dlr);
-app.post('/voice', voice.voice);
+// app.post('/voice', voice.voice);
 app.post('/ipn', payments.ipn);
 
 

@@ -18,51 +18,51 @@ exports.wiredUssd = function(req, res) {
 
   // look up - is customer? or Agent - offer 2 parts, agent -?
   if (text === '') {
-	message = 'CON Welcome to Athena\n';
-	message += '1: Help a Friend\n';
-	message += '2: Help Me\n';
+	message = 'CON Welcome to Wired Networks Ltd \n';
+	message += '1: Enter new device \n';
+	message += '2: Enter sales person\n';
+	message += '3: Check status of mobile device\n';
+	message += '4: Mark device as sold';
   }
 
-  // SEND SOS
-  else if (text === '2') {
-    // end connection
-  	message = 'END Your SOS has been sent';
-  }
-  // help a friend report an issue
+  // add device
   else if (text === '1') {
-    message = 'CON Tell us where this is happening';
+    // check if user is agent
+  	message = 'CON Enter device IMEI number';
   }
   else if (length === 2 && txt[0] === '1') {
-    message = 'CON Do you know any names or parties involved ? \n';
-    // message += 'SARS';
-
+    message = 'CON Enter device color';
   }
-  // else if (length === 4 && txt[0] === '1') {
-  //   message = 'CON Enter Warranty status\n';
-  //   message += '1) Yes / 2) No';
-  // }
-  // else if (length === 5 && txt[0] === '1') {
-  //   message = 'CON Enter Insurance status\n';
-  //   message += '1). Yes / 2). No';
-  // }
-  // else if (length === 6 && txt[0] === '1') {
-  //   message = 'CON Is device in stock\n';
-  //   message += '1). Yes / 2). No';
-  // }
   else if (length === 3 && txt[0] === '1') {
+    message = 'CON Enter device model\n';
+    message += 'eg. Nokia 3310';
+  }
+  else if (length === 4 && txt[0] === '1') {
+    message = 'CON Enter Warranty status\n';
+    message += '1) Yes / 2) No';
+  }
+  else if (length === 5 && txt[0] === '1') {
+    message = 'CON Enter Insurance status\n';
+    message += '1). Yes / 2). No';
+  }
+  else if (length === 6 && txt[0] === '1') {
+    message = 'CON Is device in stock\n';
+    message += '1). Yes / 2). No';
+  }
+  else if (length === 7 && txt[0] === '1') {
     // commit to db
+    message = 'END Device registered';
     var options = text.split('*');
-    message = `END Thank you so much\n The Issue at ${options[1]} has been reported`;
 
     db.Device.create({
       imei: options[1],
       color: options[2],
-      model: options[1],
-      warrant_status: options[1],
-      insurance_status: options[1],
-      in_stock: options[1]
+      model: options[3],
+      warrant_status: options[4],
+      insurance_status: options[5],
+      in_stock: options[6]
     }).then(function(device) {
-      console.log('Report Added', device);
+      console.log('device added', device);
     });
 
   }

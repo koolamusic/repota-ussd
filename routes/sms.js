@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 var options = require('../config/config');
 var AfricasTalking = require('africastalking')(options.AT);
@@ -7,7 +7,8 @@ var voice = AfricasTalking.VOICE;
 var redis = require("redis");
 var r = redis.createClient();
 
-var Houndify = require('houndify').Houndify;
+// var Houndify = require('houndify').HoundifyExpress;
+var Houndify = AfricasTalking.SMS;
 
 var houndify = new Houndify({
   auth: {
