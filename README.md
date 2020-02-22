@@ -1,24 +1,25 @@
-### Node JS AfricasTalking Sample App
+# REPOTA USSD CLIENT
 
-Sample app with AT API's - Voice, SMS, USSD, Shortcode demo
+The USSD Client for the Repota Citizen Safety App
+![repota-screencast](./screencast.gif)
 
+## Setup
 
-### How to run
-
-- Install node.js version ver >5.x.x (this demo runs with ES6 language features)
-- Install mysql (create user root, and database wired)
-
+- Once you've linked your phone number and twitter username, you can report an issue using the USSD interface
+- This data is collected and streamed to relevant security authorities and blasted using the repota-twitter-bot
+- Install node.js version ver >8.x.x (this demo runs with ES6 language features)
+- Install mysql (create user root, and database)
 
 ### Create a .env file at the root of the project with the following configs
 
-```
+```env
 PORT=
 
 AT_USERNAME=
 AT_APIKEY=
 
 DB_HOST=
-DB_NAME=wired
+DB_NAME=
 DB_USER=
 DB_PASS=
 
@@ -33,7 +34,6 @@ HOUNDIFY_USERID=
 $ npm install
 $ npm start
 ```
-
 
 ### Routes
 
